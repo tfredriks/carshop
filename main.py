@@ -5,3 +5,11 @@ class Carshop:
         self.name = name
 
 
+
+
+
+
+
+
+zenshop = Carshop("ZenShop")
+print(zenshop.name)
