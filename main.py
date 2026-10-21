@@ -1,9 +1,9 @@
 
 
 class Carshop:
-    def __init__(self, name, balance):
+    def __init__(self, name):
         self.name = name
-        self.balance = balance
+        self.balance = 0
         self.car_list = []  #every new Carshop object gets its own list
 
 
@@ -11,14 +11,15 @@ class Carshop:
     def show_balance():
         pass
 
-    def show_car_list():
+    def show_car_list(self):
+        print(self.name, "cars:")
+        for i in self.car_list:
+            print(i.brand, i.model, i.year, i.color, i.price, i.actual_value)
+
+
+
+    def sell_car():
         pass
-
-    def send_new_car_to_specific_carshop(self): #self is what car object to be sent
-        self.append(self)
-
-
-
 
 
 
@@ -30,7 +31,7 @@ class Car:
         self.color = color
         self.price = price
         self.actual_value = actual_value
-        specific_carshop.car_list.append(self)
+        specific_carshop = specific_carshop.car_list.append(self)
 
 
 #--------------- stop classes ---------------
@@ -39,6 +40,8 @@ zenshop = Carshop("ZenShop") # create the specific carshop object before creatin
 
 car1 = Car(zenshop,"Volvo", "XC60", 2015, "Yellow", 25000, 5000)
 car2 = Car(zenshop, "Volvo", "242", 1984, "Black", 35000, 1500)
+car3 = Car(zenshop, "Volvo", "850", 1955, "Red", 35000, 1500)
+#zenshop is pointing to specific_carshop in the attributes for Car class (when creating the car object JUST LOOK AT IT)
 
-
-print(zenshop.name, zenshop.car_list)
+zenshop.show_car_list()
+#print(zenshop.name, zenshop.car_list)
