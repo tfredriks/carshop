@@ -1,6 +1,7 @@
 
 #----classes
 
+#----------------CLASS Carshop------------------------
 class Carshop:
     def __init__(self, name):
         self.name = name
@@ -33,13 +34,14 @@ class Carshop:
     def show_sales_history(): #what the  carshop has sold
         pass
 
-    def remove_car():   #remove from stock
+    def remove_car(self,specific_carshop):   #remove from stock
+        specific_carshop.cars.remove(self)
         pass
 
     def search_car():
         pass    
 
-
+#----------------CLASS Cars------------------------
 class Car: #dont compare definitions/methods in the class with the init/constructor below
     def __init__(self,specific_carshop, brand, model, year, color, price, actual_value):
         self.brand = brand
@@ -50,8 +52,12 @@ class Car: #dont compare definitions/methods in the class with the init/construc
         self.actual_value = actual_value
         specific_carshop = specific_carshop.cars.append(self)
 
-    def get_details(): #returns car details
-        pass
+    def get_details(specific_carshop, car): #returns(not yet) car details
+        print("\n")
+        for i in specific_carshop.cars:
+            if i == car:    #need to have like this since cars is a list of cars/to search
+                print(i.brand, i.model, i.year, i.color, i.price, i.actual_value)
+        
 
     def update_price():
         pass
@@ -68,7 +74,7 @@ class Car: #dont compare definitions/methods in the class with the init/construc
     def change_condition(): #update if new or 2nd hand
         pass
 
-
+#----------------CLASS Customers------------------------
 class Customers:
     def __init__(self, specific_carshop, firstname, lastname):
         self.firstname = firstname
@@ -128,3 +134,8 @@ Carshop.show_balance(zenshop)
 Carshop.sell_car(car3, zenshop)
 
 Carshop.show_customers(zenshop)
+print("\n\n")
+Carshop.remove_car(car1,zenshop)    #remove car1 from zenshop
+Carshop.show_cars(zenshop)
+
+Car.get_details(zenshop, car2)
