@@ -12,12 +12,10 @@ class Carshop:
     def show_balance(self):
         print(self.name, "balance is:", self.balance)
         
-
     def show_cars(self): #shows the cars for specific carshop
         print(self.name, "now has these cars:")
         for i in self.cars:
             print(i.brand, i.model, i.year, i.color, i.price, i.actual_value)
-
 
     def show_customers(specific_carshop): #and add if the customer has bought or not bought any cars
         print("Customer list of", specific_carshop.name)
@@ -31,7 +29,15 @@ class Carshop:
         specific_carshop.balance+=5 # gets a bonus
         print(specific_carshop.name, "balance is:", specific_carshop.balance)
         Carshop.show_cars(specific_carshop)
-        
+
+    def show_sales_history(): #what the  carshop has sold
+        pass
+
+    def remove_car():   #remove from stock
+        pass
+
+    def search_car():
+        pass    
 
 
 class Car: #dont compare definitions/methods in the class with the init/constructor below
@@ -44,6 +50,24 @@ class Car: #dont compare definitions/methods in the class with the init/construc
         self.actual_value = actual_value
         specific_carshop = specific_carshop.cars.append(self)
 
+    def get_details(): #returns car details
+        pass
+
+    def update_price():
+        pass
+
+    def apply_discount():
+        pass
+
+    def calculate_total_price(): #if buy many cars
+        pass
+
+    def calculate_age(): #check year to date, aka age of the car
+        pass
+
+    def change_condition(): #update if new or 2nd hand
+        pass
+
 
 class Customers:
     def __init__(self, specific_carshop, firstname, lastname):
@@ -52,6 +76,20 @@ class Customers:
         self.boughtcars = []    # at print shows [] if the customers hasnt bought any cars
         specific_carshop = specific_carshop.customers.append(self)
 
+    def customer_details():
+        pass
+
+    def update_contact_info():
+        pass
+
+    def view_purchase_history():
+        pass
+
+    def buy_car():
+        pass
+
+    def calculate_total_spent():
+        pass
 
 
 #--------------- stop classes ---------------
