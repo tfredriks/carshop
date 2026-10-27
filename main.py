@@ -82,6 +82,10 @@ class Car: #dont compare definitions/methods in the class with the init/construc
     def change_condition(): #update if new or 2nd hand
         pass
 
+    def voice_box(self):
+        print("REVERT TO NORMAL!")
+
+
 #----------------CLASS Customers------------------------
 class Customers:
     def __init__(self, specific_carshop, firstname, lastname):
@@ -152,3 +156,4 @@ Car.get_details(zenshop, car2)
 
 car1 = Car(zenshop,"Volvo", "XC60", 2015, "Yellow", 25000, 5000)
 zenshop.calculate_total_price(car1, car2)
+
