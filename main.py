@@ -41,7 +41,16 @@ class Carshop:
     def search_car():
         pass    
 
-#----------------CLASS Cars------------------------
+    def calculate_total_price(self, firstcar, secondcar): #self blir zenshop. when run the function as zenshop.calculate_total_price(self, firstcar, secondcar) if buy 2 cars (put attributes like car1 etc)
+            total_price = firstcar.price + secondcar.price
+            print(
+                "Total Price for", firstcar.brand, firstcar.model, 
+                "and", 
+                secondcar.brand, secondcar.model,"is:", total_price
+                )
+            pass
+
+#----------------CLASS Car------------------------
 class Car: #dont compare definitions/methods in the class with the init/constructor below
     def __init__(self,specific_carshop, brand, model, year, color, price, actual_value):
         self.brand = brand
@@ -53,20 +62,19 @@ class Car: #dont compare definitions/methods in the class with the init/construc
         specific_carshop = specific_carshop.cars.append(self)
 
     def get_details(specific_carshop, car): #returns(not yet) car details
-        print("\n")
+        print("\nDetails for", car.brand, car.model )
         for i in specific_carshop.cars:
             if i == car:    #need to have like this since cars is a list of cars/to search
-                print(i.brand, i.model, i.year, i.color, i.price, i.actual_value)
+                print("Year: ",i.year, ", Color:", i.color, ", Price:", i.price, ", Actual Value:", i.actual_value)
         
 
     def update_price():
+        
         pass
 
     def apply_discount():
-        pass
 
-    def calculate_total_price(): #if buy many cars
-        pass
+        pass  
 
     def calculate_age(): #check year to date, aka age of the car
         pass
@@ -138,4 +146,9 @@ print("\n\n")
 Carshop.remove_car(car1,zenshop)    #remove car1 from zenshop
 Carshop.show_cars(zenshop)
 
+
+
 Car.get_details(zenshop, car2)
+
+car1 = Car(zenshop,"Volvo", "XC60", 2015, "Yellow", 25000, 5000)
+zenshop.calculate_total_price(car1, car2)
