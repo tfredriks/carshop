@@ -16,7 +16,7 @@ class Carshop:
     def show_cars(self): #shows the cars for specific carshop
         print(self.name, "now has these cars:")
         for i in self.cars:
-            print(i.brand, i.model, i.year, i.color, i.price, i.actual_value)
+            print(i.brand, i.model, i.year, i.color, i.price, i.actual_value, i.condition)
 
     def show_customers(specific_carshop): #and add if the customer has bought or not bought any cars
         print("Customer list of", specific_carshop.name)
@@ -59,13 +59,14 @@ class Car: #dont compare definitions/methods in the class with the init/construc
         self.color = color
         self.price = price
         self.actual_value = actual_value
+        self.condition = "New"
         specific_carshop = specific_carshop.cars.append(self)
 
     def get_details(specific_carshop, car): #returns(not yet) car details
         print("\nDetails for", car.brand, car.model )
         for i in specific_carshop.cars:
             if i == car:    #need to have like this since cars is a list of cars/to search
-                print("Year: ",i.year, ", Color:", i.color, ", Price:", i.price, ", Actual Value:", i.actual_value)
+                print("Year: ",i.year, ", Color:", i.color, ", Price:", i.price, ", Actual Value:", i.actual_value, "Condition:", i.condition)
         
 
     def update_price():
@@ -79,13 +80,13 @@ class Car: #dont compare definitions/methods in the class with the init/construc
     def calculate_age(): #check year to date, aka age of the car
         pass
 
-    def change_condition(): #update if new or 2nd hand
-        pass
+    def change_condition(self, specific_carshop): #update if new or 2nd hand #!!!!!!!!!!!!!!!!!!
+        for i in specific_carshop.cars:
+                    if i == self:
+                        self.condition = "used"
+        
 
-    def voice_box(self):
-        print("REVERT TO NORMAL!")
-
-
+    
 #----------------CLASS Customers------------------------
 class Customers:
     def __init__(self, specific_carshop, firstname, lastname):
@@ -121,6 +122,13 @@ zenshop = Carshop("ZenShop") # create the specific carshop object before creatin
 car1 = Car(zenshop,"Volvo", "XC60", 2015, "Yellow", 25000, 5000)
 car2 = Car(zenshop, "Volvo", "242", 1984, "Black", 35000, 1500)
 car3 = Car(zenshop, "Volvo", "850", 1955, "Red", 35000, 1500)
+car4 = Car(zenshop, "Volvo", "242", 1984, "Black", 35000, 1500)
+car5 = Car(zenshop, "Volvo", "850", 1955, "Red", 35000, 1500)
+car6 = Car(zenshop,"Volvo", "XC60", 2015, "Yellow", 25000, 5000)
+car7 = Car(zenshop, "Volvo", "242", 1984, "Black", 35000, 1500)
+car8 = Car(zenshop, "Volvo", "850", 1955, "Red", 35000, 1500)
+car9 = Car(zenshop, "Volvo", "242", 1984, "Black", 35000, 1500)
+car10 = Car(zenshop, "Volvo", "850", 1955, "Red", 35000, 1500)
 #zenshop is pointing to specific_carshop in the attributes for Car class (when creating the car object JUST LOOK AT IT)
 
 # Customer objects in Customers class
@@ -157,3 +165,5 @@ Car.get_details(zenshop, car2)
 car1 = Car(zenshop,"Volvo", "XC60", 2015, "Yellow", 25000, 5000)
 zenshop.calculate_total_price(car1, car2)
 
+Car.change_condition(car1, zenshop)
+Carshop.show_cars(zenshop)
