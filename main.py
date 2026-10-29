@@ -1,4 +1,6 @@
 
+
+
 #----classes
 
 #----------------CLASS Carshop------------------------
@@ -69,9 +71,15 @@ class Car: #dont compare definitions/methods in the class with the init/construc
                 print("Year: ",i.year, ", Color:", i.color, ", Price:", i.price, ", Actual Value:", i.actual_value, "Condition:", i.condition)
         
 
-    def update_price():
-        
-        pass
+    def update_price(self, specific_carshop): 
+       """ if the def were in Carshop class then could run zenshop.update_price...
+       self, but now has to put specific_carshop as attribute """
+       for i in specific_carshop.cars:
+            if i == self:
+                new_price = input("Specify new price for the car:")
+                self.price = new_price
+                return self.price
+
 
     def apply_discount():
 
@@ -83,7 +91,7 @@ class Car: #dont compare definitions/methods in the class with the init/construc
     def change_condition(self, specific_carshop): #update if new or 2nd hand #!!!!!!!!!!!!!!!!!!
         for i in specific_carshop.cars:
                     if i == self:
-                        self.condition = "used"
+                        self.condition = "Used"
         
 
     
@@ -116,7 +124,9 @@ class Customers:
 #--objects of classes
 
 # Zenshop object in Carshop class
+#zenshop is pointing to specific_carshop in the attributes for Car class (when creating the car object JUST LOOK AT IT)
 zenshop = Carshop("ZenShop") # create the specific carshop object before creating the car objects
+
 
 # Car objects in Car class
 car1 = Car(zenshop,"Volvo", "XC60", 2015, "Yellow", 25000, 5000)
@@ -129,21 +139,13 @@ car7 = Car(zenshop, "Volvo", "242", 1984, "Black", 35000, 1500)
 car8 = Car(zenshop, "Volvo", "850", 1955, "Red", 35000, 1500)
 car9 = Car(zenshop, "Volvo", "242", 1984, "Black", 35000, 1500)
 car10 = Car(zenshop, "Volvo", "850", 1955, "Red", 35000, 1500)
-#zenshop is pointing to specific_carshop in the attributes for Car class (when creating the car object JUST LOOK AT IT)
 
 # Customer objects in Customers class
-
 customer1 = Customers(zenshop, "Adam", "Bertilsson")
 customer2 = Customers(zenshop, "Erik", "Svensson")
 customer3 = Customers(zenshop, "Lena", "Ericsson")
 customer4 = Customers(zenshop, "Anna", "Moufa")
 customer5 = Customers(zenshop, "Tomas", "Kolbert")
-
-
-
-
-
-
 
 
 #--------methods runs below
@@ -167,3 +169,9 @@ zenshop.calculate_total_price(car1, car2)
 
 Car.change_condition(car1, zenshop)
 Carshop.show_cars(zenshop)
+
+Car.update_price(car5, zenshop) #fix such that the def is written the same way, much easier to follow
+Car.get_details(zenshop, car5)
+
+
+
