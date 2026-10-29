@@ -16,7 +16,7 @@ class Carshop:
         print(self.name, "balance is:", self.balance)
         
     def show_cars(self): #shows the cars for specific carshop
-        print(self.name, "now has these cars:")
+        print("\n", self.name, "now has these cars:")
         for i in self.cars:
             print(i.brand, i.model, i.year, i.color, i.price, i.actual_value, i.condition)
 
@@ -97,9 +97,10 @@ class Car: #dont compare definitions/methods in the class with the init/construc
     
 #----------------CLASS Customers------------------------
 class Customers:
-    def __init__(self, specific_carshop, firstname, lastname):
+    def __init__(self, specific_carshop, firstname, lastname, age):
         self.firstname = firstname
         self.lastname = lastname
+        self.age = age
         self.boughtcars = []    # at print shows [] if the customers hasnt bought any cars
         specific_carshop = specific_carshop.customers.append(self)
 
@@ -125,10 +126,10 @@ class Customers:
 
 # Zenshop object in Carshop class
 #zenshop is pointing to specific_carshop in the attributes for Car class (when creating the car object JUST LOOK AT IT)
-zenshop = Carshop("ZenShop") # create the specific carshop object before creating the car objects
+zenshop = Carshop("Zen Shop") # create the specific carshop object before creating the car objects
+smoothshop = Carshop("Smooth Shop")
 
-
-# Car objects in Car class
+# Car objects in Zen Shop's car list
 car1 = Car(zenshop,"Volvo", "XC60", 2015, "Yellow", 25000, 5000)
 car2 = Car(zenshop, "Volvo", "242", 1984, "Black", 35000, 1500)
 car3 = Car(zenshop, "Volvo", "850", 1955, "Red", 35000, 1500)
@@ -140,13 +141,33 @@ car8 = Car(zenshop, "Volvo", "850", 1955, "Red", 35000, 1500)
 car9 = Car(zenshop, "Volvo", "242", 1984, "Black", 35000, 1500)
 car10 = Car(zenshop, "Volvo", "850", 1955, "Red", 35000, 1500)
 
-# Customer objects in Customers class
-customer1 = Customers(zenshop, "Adam", "Bertilsson")
-customer2 = Customers(zenshop, "Erik", "Svensson")
-customer3 = Customers(zenshop, "Lena", "Ericsson")
-customer4 = Customers(zenshop, "Anna", "Moufa")
-customer5 = Customers(zenshop, "Tomas", "Kolbert")
+# Car objects in Smooth Shop's car list
+# FIX SUCH THAT CAN HAVE car1 in the list as car1 (car11) below
+car11 = Car(smoothshop,"Volvo", "XC60", 2015, "Yellow", 25000, 5000)
+car12 = Car(smoothshop, "Volvo", "242", 1984, "Black", 35000, 1500)
+car13 = Car(smoothshop, "Volvo", "850", 1955, "Red", 35000, 1500)
+car14 = Car(smoothshop, "Volvo", "242", 1984, "Black", 35000, 1500)
+car15 = Car(smoothshop, "Volvo", "850", 1955, "Red", 35000, 1500)
+car16 = Car(smoothshop,"Volvo", "XC60", 2015, "Yellow", 25000, 5000)
+car17 = Car(smoothshop, "Volvo", "242", 1984, "Black", 35000, 1500)
+car18 = Car(smoothshop, "Volvo", "850", 1955, "Red", 35000, 1500)
+car19 = Car(smoothshop, "Volvo", "242", 1984, "Black", 35000, 1500)
+car20 = Car(smoothshop, "Volvo", "850", 1955, "Red", 35000, 1500)
 
+# Customer objects in Zen Shop's customer list
+customer1 = Customers(zenshop, "Adam", "Bertilsson", 25)
+customer2 = Customers(zenshop, "Erik", "Svensson", 78)
+customer3 = Customers(zenshop, "Lena", "Ericsson", 43)
+customer4 = Customers(zenshop, "Anna", "Moufa", 35)
+customer5 = Customers(zenshop, "Tomas", "Kolbert", 45)
+
+# Customer objects in Smooth Shop's customer list
+# FIX SUCH THAT CAN HAVE customer1 in the list as customer1 (customer11) below
+customer11 = Customers(smoothshop, "Johan", "Svensson", 50)
+customer12 = Customers(smoothshop, "Anne", "Martinsson", 55)
+customer13 = Customers(smoothshop, "Jasmin", "Dobrosson", 35)
+customer14 = Customers(smoothshop, "Xi", "Zheng", 22)
+customer15 = Customers(smoothshop, "Zhang", "Jia Jie", 18)
 
 #--------methods runs below
 Carshop.show_cars(zenshop)
@@ -170,8 +191,8 @@ zenshop.calculate_total_price(car1, car2)
 Car.change_condition(car1, zenshop)
 Carshop.show_cars(zenshop)
 
-Car.update_price(car5, zenshop) #fix such that the def is written the same way, much easier to follow
+#Car.update_price(car5, zenshop) #fix such that the def is written the same way, much easier to follow
 Car.get_details(zenshop, car5)
 
-
-
+Carshop.show_cars(smoothshop)
+Carshop.show_customers(smoothshop)
